@@ -31,6 +31,18 @@ class PolyTreeNode
         self.children.delete(child_node)
         child_node.parent = nil
     end
+
+    def dfs(target_value)
+        return self if self.value == target_value
+
+        self.children.each do |child|
+            search_result = child.dfs(target_value)
+            return search_result unless search_result.nil?
+        end
+        nil
+    end
+
+    
 end
 
 n1 = PolyTreeNode.new("root1")
