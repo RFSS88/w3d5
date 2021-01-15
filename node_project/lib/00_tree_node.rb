@@ -8,8 +8,9 @@ class PolyTreeNode
     end
 
      def parent=(new_parent)
-        self.parent = new_parent.value
-        new_parent.children << self.value
+        @parent = new_parent unless new_parent.nil?
+        new_parent.children << self if !new_parent.nil? && !new_parent.children.include?(self)
+
 
      end
 
